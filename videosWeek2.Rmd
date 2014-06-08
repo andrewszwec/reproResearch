@@ -1,0 +1,155 @@
+Videos Week 2 
+========================================================
+
+## Video 2
+**bold**
+
+- unordered list
+- some list
+
+[Some Link](http://www.google.com)
+
+or some other link type
+
+I spend some much time reading [R Bloggers][1] and [Simply Statistic][2]!
+[1]: http://www.r-bloggers.com/ "R Bloggers" 
+[2]: http://simplystatistics.org/ "Simply Stats"
+
+
+## Video 3
+### R Mark Down
+The idea is it is a minimal document langauge that allows users to focus on the content and not worry about the formatting.
+
+knitr evaluates the R code before making an HTML document. Markdown will not evaluate the R code.
+
+you can write slides presentation in R markdown. You call slidify package to make presentation.
+
+install.packages("slidify")
+
+
+## Video 4
+### Markdown Demonstration
+```{r}
+library(datasets)
+data(airquality)
+pairs(airquality)
+```
+
+```{r}
+library(stats)
+fit <- lm(Ozone ~ Wind + Solar.R + Temp, data = airquality)
+summary(fit)
+
+```
+
+## Video 5
+### Knitr PART 1
+Weave doc to make human readable
+Tangle to produce a computer code
+
+**Pros**
+- Text and code are in same spot
+- Data results automatically update to reflect change
+- code is live and is "regression test"
+
+**Con**
+- Text and code is in one place especially if there is a lot of code
+- If lengthy processing time that will slow down rendering the document
+
+
+
+## Video 6
+### Knitr PART 2
+Good for reports if you have to generate them periodically. You can generate new summary statistics
+
+knitr is not good for:
+- long research articles
+- complex and time-consuming computations
+- Documents that require precise formatting
+
+## Video 7
+### Knitr PART 3
+My First knitr document
+```{r ThisIsACodeChunkName}
+myCodeChunk  <- 1
+```
+
+My First knitr document
+```{r anotherCodeChunk, echo=FALSE}
+myCodeChunk  <- 1
+```
+
+
+## Video 8
+### Knitr PART 4
+**knitr to HTML Process**  
+.Rmd -> .md -> .html
+
+**In Knitr you can calculate a value then later embed it in your text like this**  
+```{r time, echo=FALSE}
+time <- format(Sys.time(), "%a %b %d %X %Y")
+```
+The current time is **`r time`**. Note: this is an embedded calculated value in bold.
+
+knitr embeds your plot as a base64 hex 
+
+
+#### Set Global Options for Code Chunks
+```{r setoptions, echo=FALSE}
+## opts_chunk is a method in Rmarkdown that can be used to set global variables
+opts_chunk$set(echo = FALSE, results = "hide")
+```
+
+First simulate data
+```{r simulatedata, echo=TRUE}
+x <- rnorm(100); y <- x + rnorm(100, sd = 0.5)
+```
+_Notice there is no results from this simulation here! They have been turned off_  
+  
+Here is a scatter plot of the data.
+
+```{r scatterplot, fig.height=4}
+par(mar = c(5,4,1,1), las = 1)
+plot(x,y,main = "My Simulated Data")
+```
+
+**Cheat Sheet **
+Output
+- results: "asis", "hide" # AS IS means dont preprocess the results
+- echo: TRUE, FALSE
+
+Figures
+- fig.height: numeric
+- fig.width: numeric
+
+####Caching Computations using knitr 
+THis prevents knitr from having to recalulate the computations, it stores it on disk
+```{r}
+cache = TRUE
+```
+
+
+
+## Video 9
+### Peer Assessment
+Submit SHA-1 hash that describes the commit that is the final submission
+
+
+## Assignment Notes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
